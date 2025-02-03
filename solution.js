@@ -3,12 +3,7 @@ const getEmails = (arr) => {
     return "No input provided.";
   }
   if (!Array.isArray(arr)) {
-    console.log("Invalid Argument.Please provide an array.");
-    return [];
-  }
-  if (arr.length === 0) {
-    console.log("Empty array provided.");
-    return [];
+    return "Invalid Argument.Please provide an array.";
   }
 
   const emails = arr.map((person) => person.email);
@@ -19,16 +14,15 @@ const getEmails = (arr) => {
 };
 
 const getHobbies = (arr, age) => {
-  if (arr === undefined && age === undefined) {
-    return "No Input Provided";
+  if (!Array.isArray(arr) || isNaN(age)) {
+    return "Invalid input provided";
   }
-  if (!Array.isArray(arr) && typeof age === "Number") {
-    return "Please provide an valid array";
-  }
-  if (Array.isArray(arr) && typeof age !== "Number") {
-    return "Please provide an valid age";
-  }
+
   let persons = arr.filter((person) => person.age === age);
+
+  if (persons.length === 0) {
+    return `No person of ${age} found`;
+  }
 
   persons = persons.map((person) => person.hobbies);
 
@@ -36,15 +30,10 @@ const getHobbies = (arr, age) => {
 };
 
 const getStudents = (arr, country) => {
-  if (arr === undefined && country === undefined) {
-    return "No Input Provided";
+  if (!Array.isArray(arr) || typeof country !== "string") {
+    return "Provide valid arguments.";
   }
-  if (!Array.isArray(arr) && typeof country === "String") {
-    return "Please provide an valid array";
-  }
-  if (Array.isArray(arr) && typeof country !== "String") {
-    return "Please provide an valid country";
-  }
+
   let students = arr.filter(
     (person) => person.isStudent && person.country == country
   );
@@ -57,10 +46,7 @@ const getStudents = (arr, country) => {
 };
 
 const getNameAndCity = (arr, index) => {
-  if (arr === undefined && age === undefined) {
-    return "No Input Provided";
-  }
-  if (!Array.isArray(arr) && typeof index === "Number") {
+  if (!Array.isArray(arr) && isNaN(index)) {
     return "Please provide an valid array";
   }
 
@@ -69,7 +55,7 @@ const getNameAndCity = (arr, index) => {
   if (person === undefined) {
     return `No person found at ${index} index`;
   }
-  console.log(person.name, person.city);
+  return [person.name, person.city];
 };
 
 const getAges = (arr) => {
@@ -94,14 +80,8 @@ const getfirstHobby = (arr) => {
 };
 
 const getNameAndEmailByAge = (arr, age) => {
-  if (arr === undefined && age === undefined) {
-    return "No Input Provided";
-  }
-  if (!Array.isArray(arr) && typeof age === "Number") {
-    return "Please provide an valid array";
-  }
-  if (Array.isArray(arr) && typeof age !== "Number") {
-    return "Please provide an valid age";
+  if (!Array.isArray(arr) || isNaN(age)) {
+    return "Invalid argument provided";
   }
   let persons = arr.filter((person) => person.age === age);
 
