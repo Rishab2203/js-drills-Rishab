@@ -1,0 +1,46 @@
+const items = [1, 2, 3, 4, 5, 5];
+
+const { each, filter, flatten, map, reduce, find } = require("./solution.js");
+
+///////////////////////////////////////////////////////////////////
+
+each(items, (ele, index) => {
+  console.log(index, ele * 2);
+});
+
+////////////////////////////////////////////////////////////////
+
+console.log(
+  map(items, (ele, index) => {
+    return ele * 4;
+  })
+);
+
+/////////////////////////////////////////////////////////////////
+
+console.log(
+  reduce([5, 6, 7], (s, ele) => {
+    return s + ele;
+  })
+);
+
+///////////////////////////////////////////////////////////////////
+
+console.log(
+  find(items, (ele) => {
+    return ele === 2;
+  })
+);
+
+//////////////////////////////////////////////////////////////////////
+
+console.log(
+  filter(items, (ele) => {
+    return ele === 5;
+  })
+);
+
+//////////////////////////////////////////////////////////////////////
+const nestedArray = [1, [2], [[3]], [[[4]]]];
+
+console.log(flatten(nestedArray));
